@@ -9,38 +9,44 @@ tour de l’autre joueur.
 - Lancer le dé. S’il obtient un 1, son score ROUND est perdu et c’est la fin de son tour.
 Le premier joueur qui atteint les 100 points sur global gagne le jeu.*/
 
-let play ;let globalScore ;let roundScore ; let player;
+let gamePlay ;let globalScore ;let roundScore ; let player;
 
+document.getElementById("roll").addEventListener('click',function(){
+  if (gamePlay){
+    let dice = Math.floor(Math.random()*6)+1;
+  
+//Afficher le resultat
+let diceDOM= document.querySelector('dice');
+diceDOM.style.display = 'block';
+diceDOM.src = 'dice-'+ dice + '.png'
 
+//Ajout du score à roundScore si le dé ne tombe pas sur 1
+if (dice !==1){
+  roundScore+=dice;
 
+  document.getElementById('')
 
-//fonction pour creer l'evenement cliquer sur le bouton new game et reinitialiser une partie
-
-$("#new").click(function() {
-  confirm("Vous aller démarrer une nouvelle partie");
-
- if (confirm('Reinitialisation des points')){
-  //action à faire pour la valeur true
-  restart(global,round) 
-console.log("reinitialisation")
+document.querySelector('#current-'+ player).textContent = roundScore;
 }else{
-  (confirm('La partie continue'))
-  //action à faire pour la valeur false
-console.log("La partie continue !");
+  nextPlayer();
 }
 }
-);
+});
 
-function restart(scoreGlobal,scoreProvisoire){
-scoreGlobal == 0;
-scoreProvisoire== 0;
+
+
+//reinitialisation de la partie
+document.getElementById("new").addEventListener('click',restart);
+
+function restart(){
+roundScore = [0,0];
+globalScore =  0;
+player = 0;
+gamePlay = true;
 console.log("le score est remis à 0")
 }
 
-//Ajout du score à round si le dé ne tombe pas sur 1
-if (dice !==1){
-  roundScore+=dice;
-}
+
 
 
 
