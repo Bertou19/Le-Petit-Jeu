@@ -3,8 +3,8 @@ html{
 }
 
 body{
-  background: linear-gradient(to right,tan, rgb(255, 255, 255) );
-  border:solid rgba(93, 13, 15, 0.853) 10px;
+  background: linear-gradient(to right,rgb(160, 80, 80),  tan, rgb(255, 255, 255) );
+  border:solid rgba(139, 71, 72, 0.853) 10px;
   height:100%
 }
 .btn{
@@ -19,19 +19,30 @@ body{
 .dice{
   height: 60px;
   width: 60px;
-  filter: drop-shadow(0 0 0.75rem rgba(59, 21, 30, 0.828));
+  filter: drop-shadow(0 0 0.45rem rgba(231, 185, 178, 0.828));
   position: absolute;
   left: 50%;
   top: 120px;
   transform: translateX(-50%);
-    
+  
 }
 .current1, .current2{
   height: 60px;
   width:70px;
-  background-color: crimson;
+  background: rgb(155, 55, 75);
   font-size:10px;
 
 
+}
+
+.roundScore-1,.roundScore-2{
+
+  font-size: 15px;
+  color:white;
+}
+
+#score-1,#score-2{
+  font-size: 30px;
+  color:brown;
 }
 
