@@ -20,13 +20,18 @@ body{
   height: 60px;
   width: 60px;
   filter: drop-shadow(0 0 0.75rem rgba(59, 21, 30, 0.828));
+  position: absolute;
+  left: 50%;
+  top: 120px;
+  transform: translateX(-50%);
+    
 }
-
-
-
 .current1, .current2{
   height: 60px;
   width:70px;
   background-color: crimson;
   font-size:10px;
+
+
 }
+
