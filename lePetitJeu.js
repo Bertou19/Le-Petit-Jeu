@@ -9,7 +9,7 @@ tour de l’autre joueur.
 - Lancer le dé. S’il obtient un 1, son score ROUND est perdu et c’est la fin de son tour.
 Le premier joueur qui atteint les 100 points sur global gagne le jeu.*/
 
-let gamePlay ;let globalScore ;let roundScore ; let player;
+let gamePlay ;let globalScore ;let roundScore ; let player;var dice
 
 restart();
 
@@ -17,12 +17,12 @@ restart();
 //fonction pour le lancer de dé (roll dice)
 document.getElementById("roll").addEventListener('click',function(){
   if (gamePlay){
-    let dice = Math.floor(Math.random()*6)+1;
+    dice = Math.floor(Math.random()*6)+1;
   
 //Afficher le resultat
-let diceDOM= document.getElementsByClassName('dice');
+let diceDOM= document.querySelector('.dice');
 diceDOM.style.display = 'block';
-diceDOM.src = 'face-'+ dice + '.png'
+diceDOM.src = 'face-'+ dice + '.png';
 
 //Ajout du score à roundScore si le dé ne tombe pas sur 1
 if (dice !==1){
@@ -30,7 +30,7 @@ if (dice !==1){
 
   
 
-document.querySelector('#current-'+ player).textContent = roundScore;
+document.querySelector('#roundScore-'+ player).textContent = roundScore;
 }else{
   nextPlayer();
 }
@@ -41,16 +41,16 @@ document.querySelector('#current-'+ player).textContent = roundScore;
 //ajout d'un évènement sur le click du bouton 'HOLD'
 document.getElementById('hold').addEventListener('click',function(){
   if(gamePlay){
-    roundScore[player]+=globalScore;//le roundScore du joueur actif s'ajoute au globalScore
+    globalScore[player]+=roundScore;//le roundScore du joueur actif s'ajoute au globalScore
   
-  document.getElementById('score-'+player).textContent = globalScore[player];
+  document.querySelector('#score-'+player).textContent = globalScore[player];
 
 if (globalScore[player]>= 100){
 
 document.querySelector('#player-'+ player).textContent = 'Bravo ! Vous avez gagné !';
 document.querySelector('.dice').style.display ='none';
-document.querySelector('#player-'+player+'-panel').classList.add('winner')
-document.querySelector('#player-'+player + 'panel').classList.remove('active');
+document.querySelector('#player-'+player+'.side-').classList.add('winner')
+document.querySelector('#player-'+player + '.side-').classList.remove('active');
 gamePlay=false;
 }else{
   nextPlayer();
@@ -62,13 +62,13 @@ gamePlay=false;
 function nextPlayer(){
   player ===0 ? player = 1: player =0; roundScore =0;
 
-  document.getElementById('current-1').textContent = "0";
-  document.getElementById('current-2').textContent = "0";
+  document.getElementsById('roundScore-1').textContent = "0";
+  document.getElementsById('roundScore-2').textContent = "0";
 
-  
-  
-  
-  
+  document.querySelector('.side-left').classList.toggle('active');
+  document.querySelector('.side-right').classList.toggle('active');
+  document.querySelector('.side-left').classList.remove('active');
+  document.querySelector('.side-right').classList.add('active');
   
   document.querySelector('.dice').style.display= 'none';
 }
@@ -87,14 +87,18 @@ document.querySelector('.dice').style.display ='none';
 document.getElementById('score-1').textContent = '0';
 document.getElementById('score-2').textContent = '0';
 
-document.getElementsByClassName('roundScore-1').textContent = '0';
-document.getElementsByClassName('roundScore-2').textContent = '0';
+document.getElementById('roundScore-1').textContent = "0";
+document.getElementById('roundScore-2').textContent = "0";
 
-
+document.querySelector('.side-left').classList.remove('winner')
+document.querySelector('.side-right').classList.remove('winner')
+document.querySelector('.side-left').classList.remove('active')
+document.querySelector('.side-right').classList.remove('active')
+document.querySelector('.side-left').classList.add('active');
 }
 
-document.querySelector('#current-'+ player).textContent = dice;
-document.querySelector('#current-'+ player).innerHTML = '<span>'+ dice+ '</span>';
+document.querySelector('#roundScore-'+ player).textContent = dice;
+document.querySelector('#roundScore-'+ player).innerHTML = '<span>'+ dice+ '</span>';
 let x = document.querySelector('#score-1').textContent;
 
 
