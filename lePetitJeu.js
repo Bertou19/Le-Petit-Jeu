@@ -1,3 +1,5 @@
+//DE ALMEIDA Bertille
+
 /*Règles :
 Le jeu comprend 2 joueurs sur un seul et même écran.
 Chaque joueur possède un score temporaire (ROUND) et un score global (GLOBAL).
