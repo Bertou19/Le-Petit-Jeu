@@ -41,7 +41,7 @@ body{
   color:white;
 }
 
-#score-1,#score-2{
+#globalScore-1,#globalScore-2{
   font-size: 30px;
   color:brown;
 }
