@@ -23,15 +23,10 @@ document.getElementById("roll").addEventListener('click',function(){
     let diceDOM= document.querySelector('.dice');
     diceDOM.style.display = 'block';
     diceDOM.src = 'face-'+ dice + '.png';
-    console.log("valeur du dé " + dice) // // débogage de valeur de 'dice'
-
+   
     //Ajout du score à roundScore si le dé ne tombe pas sur 1
     if (dice !==1){
       roundScore+=dice;
-      console.log("Num player : " + player) // débogage de valeur de 'player'
-      console.log("valeur du roundScore : "+  roundScore) // débogage de valeur 'roundScore'
-  
-
       document.querySelector('#roundScore-'+ player).textContent = roundScore;
     }else{
       
@@ -42,16 +37,12 @@ document.getElementById("roll").addEventListener('click',function(){
 });
 
 
-//ajout d'un évènement sur le click du bouton 'HOLD'
-document.getElementById('hold').addEventListener('click',function(){
-  console.log("gamePlay"+ gamePlay)
+    //ajout d'un évènement sur le click du bouton 'HOLD'
+      document.getElementById('hold').addEventListener('click',function(){
+  
   if(gamePlay){
-    console.log(globalScore[player-1])
     
     globalScore[player-1]+= roundScore//le roundScore du joueur actif s'ajoute au globalScore(position-1 pour tomber dsans la première case du tableau)
-  
-    console.log(player)
-    console.log(globalScore[player-1])
   
     document.querySelector('#globalScore-'+player).innerHTML = globalScore[player-1];
     
@@ -76,10 +67,7 @@ function nextPlayer(){
 
   document.querySelector('.side-left').classList.toggle('active');
   document.querySelector('.side-right').classList.toggle('active');
-  document.querySelector('.side-left').classList.remove('active');
-  document.querySelector('.side-right').classList.add('active');
   
-  document.querySelector('.dice').style.display= 'none';
 }
 
 //reinitialisation de la partie
@@ -90,8 +78,7 @@ function restart(){
   globalScore =  [0,0];
   player = 1;
   gamePlay = true;
-  console.log("le score est remis à 0")
-
+ 
   document.querySelector('.dice').style.display ='none';
 
   document.getElementById('globalScore-1').textContent = '0';
@@ -105,12 +92,7 @@ function restart(){
   document.querySelector('.side-left').classList.remove('active')
   document.querySelector('.side-right').classList.remove('active')
   document.querySelector('.side-left').classList.add('active');
-  //debogage : 
-  console.log("Affichage des variables")
-  console.log("roundScore-1 : " + roundScore-1)
-  console.log("roundScore-2 : " + roundScore-2)
-  console.log("roundScore : "+ roundScore)
- 
+
 }
 
 document.querySelector('#roundScore-'+ player).textContent = dice;
